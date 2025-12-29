@@ -36,16 +36,15 @@ class FacultyService {
         return facultyRepository.findAll();
     }
 
-    public List<Faculty> getFacultiesByColor(String color) {
-        return facultyRepository.findByColor(color);
+    // Шаг 1: поиск факультета по имени или цвету
+    public List<Faculty> findFacultiesByNameOrColor(String searchString) {
+        return facultyRepository.findByNameContainingIgnoreCaseOrColorContainingIgnoreCase(
+                searchString, searchString);
     }
 
-    public List<Faculty> findFacultiesByNameOrColor(String name, String color) {
-        return facultyRepository.findByNameIgnoreCaseOrColorIgnoreCase(name, color);
-    }
-
-    public List<Student> getStudentsByFaculty(Long facultyId) {
-        Faculty faculty = facultyRepository.findById(facultyId).orElse(null);
+    // Шаг 4: получение студентов факультета
+    public List<Student> getFacultyStudents(Long facultyId) {
+        Faculty faculty = getFacultyById(facultyId);
         return faculty != null ? faculty.getStudents() : Collections.emptyList();
     }
 }

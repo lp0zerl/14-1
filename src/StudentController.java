@@ -1,7 +1,6 @@
-import java.util.Collections;
 import java.util.List;
 
-// КОНТРОЛЛЕРЫ
+// ============== КОНТРОЛЛЕРЫ ==============
 @RestController
 @RequestMapping("/student")
 class StudentController {
@@ -37,21 +36,39 @@ class StudentController {
         return studentService.getAllStudents();
     }
 
-    @GetMapping("/age/{age}")
-    public List<Student> getStudentsByAge(@PathVariable int age) {
-        return studentService.getStudentsByAge(age);
-    }
-
-    @GetMapping("/age-between")
+    // Шаг 1: Эндпоинт для получения студентов по возрасту в промежутке
+    @GetMapping("/age/between")
     public List<Student> getStudentsByAgeBetween(
             @RequestParam int min,
             @RequestParam int max) {
         return studentService.getStudentsByAgeBetween(min, max);
     }
 
+    // Шаг 4: Эндпоинт для получения факультета студента
+    @GetMapping("/{id}/faculty")
+    public Faculty getStudentFaculty(@PathVariable Long id) {
+        return studentService.getStudentFaculty(id);
+    }
+
+    // Шаг 4: Эндпоинт для получения студентов факультета
     @GetMapping("/faculty/{facultyId}")
     public List<Student> getStudentsByFaculty(@PathVariable Long facultyId) {
-        // Используем метод из FacultyService через дополнительный контроллер
-        return Collections.emptyList();
+        return studentService.getStudentsByFaculty(facultyId);
+    }
+
+    // Шаг 3: Дополнительные эндпоинты для SQL запросов
+    @GetMapping("/name-contains/{letter}")
+    public List<Student> getStudentsWithNameContaining(@PathVariable String letter) {
+        return studentService.getStudentsWithNameContaining(letter);
+    }
+
+    @GetMapping("/age-less-than-id")
+    public List<Student> getStudentsWhereAgeLessThanId() {
+        return studentService.getStudentsWhereAgeLessThanId();
+    }
+
+    @GetMapping("/ordered-by-age")
+    public List<Student> getStudentsOrderedByAge() {
+        return studentService.getStudentsOrderedByAge();
     }
 }

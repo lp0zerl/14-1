@@ -35,20 +35,15 @@ class FacultyController {
         return facultyService.getAllFaculties();
     }
 
-    @GetMapping("/color/{color}")
-    public List<Faculty> getFacultiesByColor(@PathVariable String color) {
-        return facultyService.getFacultiesByColor(color);
-    }
-
+    // Шаг 1: Эндпоинт для поиска факультета по имени или цвету
     @GetMapping("/search")
-    public List<Faculty> findFacultiesByNameOrColor(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String color) {
-        return facultyService.findFacultiesByNameOrColor(name, color);
+    public List<Faculty> findFacultiesByNameOrColor(@RequestParam String search) {
+        return facultyService.findFacultiesByNameOrColor(search);
     }
 
+    // Шаг 4: Эндпоинт для получения студентов факультета
     @GetMapping("/{id}/students")
-    public List<Student> getStudentsByFaculty(@PathVariable Long id) {
-        return facultyService.getStudentsByFaculty(id);
+    public List<Student> getFacultyStudents(@PathVariable Long id) {
+        return facultyService.getFacultyStudents(id);
     }
 }
