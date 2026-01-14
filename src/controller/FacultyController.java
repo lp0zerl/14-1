@@ -1,3 +1,9 @@
+package controller;
+
+import model.Faculty;
+import model.Student;
+import service.FacultyService;
+
 import java.util.List;
 
 @RestController

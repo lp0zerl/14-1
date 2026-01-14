@@ -1,3 +1,7 @@
+package repositiry;
+
+import model.Faculty;
+
 import java.util.List;
 
 @Repository

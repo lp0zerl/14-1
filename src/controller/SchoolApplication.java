@@ -1,3 +1,10 @@
+package controller;
+
+import model.Faculty;
+import model.Student;
+import repositiry.FacultyRepository;
+import repositiry.StudentRepository;
+
 import java.util.Arrays;
 import java.util.List;
 

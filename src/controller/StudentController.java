@@ -1,3 +1,9 @@
+package controller;
+
+import model.Faculty;
+import model.Student;
+import service.StudentService;
+
 import java.util.List;
 
 // ============== КОНТРОЛЛЕРЫ ==============

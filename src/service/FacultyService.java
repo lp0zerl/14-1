@@ -1,3 +1,9 @@
+package service;
+
+import model.Faculty;
+import model.Student;
+import repositiry.FacultyRepository;
+
 import java.util.Collections;
 import java.util.List;
 

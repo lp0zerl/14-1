@@ -1,3 +1,5 @@
+package model;
+
 // ============== МОДЕЛИ ДАННЫХ ==============
 @Entity
 class Student {
@@ -30,7 +32,7 @@ class Student {
 
     @Override
     public String toString() {
-        return "Student{id=" + id + ", name='" + name + "', age=" + age +
+        return "model.Student{id=" + id + ", name='" + name + "', age=" + age +
                 (faculty != null ? ", faculty=" + faculty.getName() : "") + "}";
     }
 }

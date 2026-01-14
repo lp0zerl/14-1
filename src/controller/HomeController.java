@@ -1,3 +1,5 @@
+package controller;
+
 // ============== КОНТРОЛЛЕР ГЛАВНОЙ СТРАНИЦЫ ==============
 @RestController
 class HomeController {
@@ -58,7 +60,7 @@ class HomeController {
                                 <li><strong>GET /student/{id}/faculty</strong> - факультет студента</li>
                                 <li><strong>GET /faculty/{id}/students</strong> - студенты факультета</li>
                             </ul>
-                            <p class="success">Связь @ManyToOne настроена между Student и Faculty</p>
+                            <p class="success">Связь @ManyToOne настроена между model.Student и model.Faculty</p>
                         </div>
                 
                         <h2>📡 Быстрые ссылки:</h2>
