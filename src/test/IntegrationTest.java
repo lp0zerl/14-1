@@ -1,3 +1,10 @@
+package test;
+
+import service.BasketService;
+import service.InMemoryStorageService;
+import service.SearchService;
+import service.StorageService;
+
 import java.util.List;
 
 // ==================== ИНТЕГРАЦИОННЫЙ ТЕСТ ====================

@@ -1,3 +1,5 @@
+package basket;
+
 class BasketItem {
     private final Product product;
     private final int quantity;

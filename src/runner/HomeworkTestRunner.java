@@ -1,3 +1,9 @@
+package runner;
+
+import test.BasketServiceTest;
+import test.IntegrationTest;
+import test.SearchServiceTest;
+
 // ==================== ТЕСТОВЫЙ КЛАСС ДЛЯ ЗАПУСКА ====================
 class HomeworkTestRunner {
 
@@ -8,7 +14,7 @@ class HomeworkTestRunner {
         BasketServiceTest basketServiceTest = new BasketServiceTest();
 
         try {
-            System.out.println("Тестирование SearchService:");
+            System.out.println("Тестирование service.SearchService:");
             searchServiceTest.testSearchWithEmptyStorage();
             searchServiceTest.testSearchWithNoMatchingProducts();
             searchServiceTest.testSearchWithMatchingProduct();
@@ -18,7 +24,7 @@ class HomeworkTestRunner {
             searchServiceTest.testSearchCaseInsensitive();
             searchServiceTest.testSearchWithPartialMatch();
 
-            System.out.println("Тестирование BasketService:");
+            System.out.println("Тестирование service.BasketService:");
             basketServiceTest.testAddNonExistentProduct();
             basketServiceTest.testAddExistingProduct();
             basketServiceTest.testGetEmptyUserBasket();
