@@ -1,3 +1,8 @@
+package model;
+
+import repository.FacultyRepository;
+import repository.StudentRepository;
+
 import java.util.Arrays;
 import java.util.List;
 

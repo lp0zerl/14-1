@@ -1,3 +1,5 @@
+package model;
+
 // МОДЕЛИ
 @Entity
 class Student {
@@ -52,6 +54,6 @@ class Student {
 
     @Override
     public String toString() {
-        return String.format("Student{id=%d, name='%s', age=%d}", id, name, age);
+        return String.format("model.Student{id=%d, name='%s', age=%d}", id, name, age);
     }
 }

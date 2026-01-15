@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +56,6 @@ class Faculty {
 
     @Override
     public String toString() {
-        return String.format("Faculty{id=%d, name='%s', color='%s'}", id, name, color);
+        return String.format("model.Faculty{id=%d, name='%s', color='%s'}", id, name, color);
     }
 }
