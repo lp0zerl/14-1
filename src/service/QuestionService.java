@@ -1,8 +1,10 @@
 package service;
 
+import model.Question;
+
 import java.util.Collection;
 
-// === Интерфейс QuestionService ===
+// Интерфейс QuestionService
 interface QuestionService {
     Question add(String question, String answer);
 

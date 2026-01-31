@@ -1,11 +1,14 @@
 package service;
 
+import model.Question;
+
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-// === Реализация ExaminerServiceImpl ===
-@Service
+// Реализация ExaminerServiceImpl
+@org.springframework.stereotype.Service
 class ExaminerServiceImpl implements ExaminerService {
     private final QuestionService questionService;
 
@@ -17,21 +20,28 @@ class ExaminerServiceImpl implements ExaminerService {
     public Collection<Question> getQuestions(int amount) {
         Collection<Question> allQuestions = questionService.getAll();
 
-        if (amount <= 0) {
-            return Set.of();
-        }
-
         if (amount > allQuestions.size()) {
-            throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST,
-                    "Запрошено больше вопросов, чем имеется в базе"
+            throw new TooManyQuestionsException(
+                    "Запрошено " + amount + " вопросов, но доступно только " + allQuestions.size()
             );
         }
 
-        Set<Question> result = new HashSet<>();
-        while (result.size() < amount) {
-            result.add(questionService.getRandomQuestion());
+        if (amount <= 0) {
+            return Collections.emptySet();
         }
+
+        Set<Question> result = new HashSet<>();
+
+        while (result.size() < amount) {
+            try {
+                Question randomQuestion = questionService.getRandomQuestion();
+                result.add(randomQuestion);
+            } catch (NoQuestionsException e) {
+                // В теории здесь не должно возникать, так как мы уже проверили количество
+                throw new TooManyQuestionsException("Не удалось получить вопросы");
+            }
+        }
+
         return result;
     }
 }

@@ -1,8 +1,11 @@
 package controller;
 
+import model.Question;
+import service.JavaQuestionService;
+
 import java.util.Collection;
 
-// === Контроллер JavaQuestionController ===
+// Контроллер для работы с Java вопросами
 @RestController
 @RequestMapping("/exam/java")
 class JavaQuestionController {
@@ -26,14 +29,16 @@ class JavaQuestionController {
             @RequestParam String answer) {
         Question toRemove = new Question(question, answer);
         Question removed = javaQuestionService.remove(toRemove);
-        return removed != null ?
-                ResponseEntity.ok(removed) :
-                ResponseEntity.notFound().build();
+
+        if (removed != null) {
+            return ResponseEntity.ok(removed);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
     @GetMapping
     public ResponseEntity<Collection<Question>> getAllQuestions() {
-        Collection<Question> questions = javaQuestionService.getAll();
-        return ResponseEntity.ok(questions);
+        return ResponseEntity.ok(javaQuestionService.getAll());
     }
 }

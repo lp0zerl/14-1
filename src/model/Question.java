@@ -1,9 +1,11 @@
+package model;
+
 import java.util.Objects;
 
-// === Модель Question ===
+// Сущность Question
 class Question {
-    private final String question;
-    private final String answer;
+    private String question;
+    private String answer;
 
     public Question(String question, String answer) {
         this.question = question;
@@ -34,7 +36,6 @@ class Question {
 
     @Override
     public String toString() {
-        return "Question: " + question + "\nAnswer: " + answer;
+        return "Вопрос: " + question + " | Ответ: " + answer;
     }
 }
-
